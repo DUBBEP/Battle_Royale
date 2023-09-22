@@ -1,2 +1,5 @@
 # Battle_Royale
-Battle game
+
+Battle royale multiplayer game
+
+Build: https://dubbep.github.io/Battle_Royale/
