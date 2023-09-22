@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CamerController : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     [Header("Look Sensitivity")]
     public float sensX;
@@ -18,7 +18,7 @@ public class CamerController : MonoBehaviour
     private float rotX;
     private float rotY;
 
-    private bool isSpectator = true;
+    private bool isSpectator;
 
     private void Start()
     {
@@ -56,7 +56,10 @@ public class CamerController : MonoBehaviour
         }
         else
         {
-             
+            transform.localRotation = Quaternion.Euler(-rotY, 0, 0);
+
+            // rotate the player horizontally
+            transform.parent.rotation = Quaternion.Euler(0, rotX, 0);
         }
     }
 }
