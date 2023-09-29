@@ -20,7 +20,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         //connect to master server
-        PhotonNetwork.ConnectUsingSettings();
+        if (!PhotonNetwork.IsConnected)
+            PhotonNetwork.ConnectUsingSettings();
     }
 
     public override void OnConnectedToMaster()

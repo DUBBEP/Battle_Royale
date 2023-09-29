@@ -37,6 +37,7 @@ public class ForceField : MonoBehaviour
             if (Time.time - lastShrinkEndTime >= shrinkWaitTime && transform.localScale.x > minShrinkAmmount)
                 Shrink();
         }
+        
 
         CheckPlayers();
     }

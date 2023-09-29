@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviourPun
         // initialize the player for all other players
         playerObj.GetComponent<PlayerController>().photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
 
-
     }
 
     public PlayerController GetPlayer (int playerId)
@@ -65,7 +64,9 @@ public class GameManager : MonoBehaviourPun
     public void CheckWinCondition ()
     {
         if (alivePlayers == 1)
-            photonView.RPC("WinGame", RpcTarget.All, players.First(x => !x.dead));
+        {
+            photonView.RPC("WinGame", RpcTarget.All, players.First(x => !x.dead).id);
+        }
     }
 
     [PunRPC]
@@ -79,6 +80,7 @@ public class GameManager : MonoBehaviourPun
 
     void GoBackToMenu ()
     {
+        Destroy(NetworkManager.instance.gameObject);
         NetworkManager.instance.ChangeScene("Menu");
     }
 }
