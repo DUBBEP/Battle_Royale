@@ -1615,6 +1615,7 @@ MonoBehaviour:
   - {fileID: 50911466}
   - {fileID: 91142585}
   alivePlayers: 0
+  playersSpawned: 0
 --- !u!4 &448780541
 Transform:
   m_ObjectHideFlags: 0
@@ -3203,8 +3204,8 @@ RectTransform:
   - {fileID: 19469533}
   - {fileID: 2073257656}
   - {fileID: 1573566813}
-  - {fileID: 2020116809}
   - {fileID: 1929901972}
+  - {fileID: 2020116809}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5753,7 +5754,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1148114702}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6027,7 +6028,7 @@ RectTransform:
   m_Children:
   - {fileID: 2008556899}
   m_Father: {fileID: 1148114702}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

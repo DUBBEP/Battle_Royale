@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviourPun
     public PlayerController[] players;
     public Transform[] spawnPoints;
     public int alivePlayers;
+    public bool playersSpawned = false;
+
 
     private int playersInGame;
 
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviourPun
     {
         players = new PlayerController[PhotonNetwork.PlayerList.Length];
         alivePlayers = players.Length;
+        playersSpawned = false;
 
         photonView.RPC("ImInGame", RpcTarget.AllBuffered);
     }
@@ -49,16 +52,27 @@ public class GameManager : MonoBehaviourPun
         // initialize the player for all other players
         playerObj.GetComponent<PlayerController>().photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
 
+        Invoke("SetSpawnedTrue", 0.5f);
     }
 
     public PlayerController GetPlayer (int playerId)
     {
-        return players.First(x => x.id == playerId);
+        foreach (PlayerController player in players)
+        {
+            if (player != null && player.id == playerId)
+                return player;
+        }
+        return null;
     }
 
     public PlayerController GetPlayer(GameObject playerObject)
     {
-        return players.First(x => x.gameObject == playerObject);
+        foreach (PlayerController player in players)
+        {
+            if (player != null && player.gameObject == playerObject)
+                return player;
+        }
+        return null;
     }
 
     public void CheckWinCondition ()
@@ -82,5 +96,10 @@ public class GameManager : MonoBehaviourPun
     {
         Destroy(NetworkManager.instance.gameObject);
         NetworkManager.instance.ChangeScene("Menu");
+    }
+
+    void SetSpawnedTrue ()
+    {
+        playersSpawned = true;
     }
 }

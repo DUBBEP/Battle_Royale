@@ -38,8 +38,8 @@ public class ForceField : MonoBehaviour
                 Shrink();
         }
         
-
-        CheckPlayers();
+        if (GameManager.instance.playersSpawned)
+            CheckPlayers();
     }
 
     void Shrink ()
