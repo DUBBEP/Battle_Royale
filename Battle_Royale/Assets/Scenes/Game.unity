@@ -1197,11 +1197,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ade43d130991648a84d815745bad1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrinkWaitTime: 30
-  shrinkAmmount: 20
+  shrinkWaitTime: 20
+  shrinkAmmount: 25
   shrinkDuration: 10
   minShrinkAmmount: 15
-  playerDamage: 20
+  playerDamage: 5
 --- !u!1001 &350411873
 PrefabInstance:
   m_ObjectHideFlags: 0

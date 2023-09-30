@@ -47,5 +47,20 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void ChangeScene (string sceneName)
     {
         PhotonNetwork.LoadLevel(sceneName);
-    } 
+    }
+
+    public override void OnDisconnected(DisconnectCause)
+    {
+        PhotonNetwork.LoadLevel("Menu");
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        GameManager.instance.alivePlayers--;
+        GameUI.instance.UpdatePlayerInfoText();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            GameManager.instance.CheckWinCondition();
+        }
+    }
 }
