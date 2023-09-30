@@ -49,7 +49,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel(sceneName);
     }
 
-    public override void OnDisconnected(DisconnectCause)
+    public override void OnDisconnected(DisconnectCause cause)
     {
         PhotonNetwork.LoadLevel("Menu");
     }
