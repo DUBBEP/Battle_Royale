@@ -88,7 +88,7 @@ public class PlayerWeapon : MonoBehaviour
         public void CallSpawnExplosion(Vector3 pos, int damage)
         {
             Debug.Log("Call Spawn Explotion Done");
-            player.photonView.RPC("SpawnExplosion", RpcTarget.All, pos, damage);
+            player.photonView.RPC("SpawnExplosion", RpcTarget.MasterClient, pos, damage);
         }
 
         [PunRPC]

@@ -58,15 +58,20 @@ public class Bullet : MonoBehaviour
         }
         else if (attackingPlayer.weaponType == "Bazooka")
         {
-            attackingPlayer.CallSpawnExplosion(this.gameObject.transform.position, 25);
+            if (isMine)
+                attackingPlayer.CallSpawnExplosion(this.gameObject.transform.position, 25);
+            
             Destroy(gameObject);
         }
     }
 
     void DelayedExplosion()
     {
-        attackingPlayer.CallSpawnExplosion(this.gameObject.transform.position, 100);
-        attackingPlayer.detonateTimer = 5f;
+        if (isMine)
+        {
+            attackingPlayer.CallSpawnExplosion(this.gameObject.transform.position, 100);
+            attackingPlayer.detonateTimer = 5f;
+        }
         Destroy(gameObject);
     }
 

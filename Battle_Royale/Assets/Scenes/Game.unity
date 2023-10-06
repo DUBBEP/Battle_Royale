@@ -2108,6 +2108,7 @@ MonoBehaviour:
   - {fileID: 91142585}
   alivePlayers: 0
   playersSpawned: 0
+  exp: {fileID: 6448042511575666828, guid: 75f76b275378c89438c6e2d3a73062b8, type: 3}
 --- !u!4 &448780541
 Transform:
   m_ObjectHideFlags: 0
