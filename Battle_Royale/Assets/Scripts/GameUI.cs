@@ -11,6 +11,7 @@ public class GameUI : MonoBehaviour
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI winText;
     public Image winBackGround;
+    public Image ScopedUI;
 
     private PlayerController player;
 
@@ -51,5 +52,14 @@ public class GameUI : MonoBehaviour
     {
         winBackGround.gameObject.SetActive(true);
         winText.text = winnerName + " wins";
+    }
+
+    public void ScopedUIOn()
+    {
+        ScopedUI.gameObject.SetActive(true);
+    }
+    public void ScopedUIOff()
+    {
+        ScopedUI.gameObject.SetActive(false);
     }
 }

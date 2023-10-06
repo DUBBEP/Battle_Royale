@@ -62,8 +62,33 @@ public class PlayerController : MonoBehaviourPun
         if (Input.GetKeyDown(KeyCode.Space))
             TryJump();
 
-        if (Input.GetMouseButtonDown(0))
-            weapon.TryShoot();
+        if (Input.GetMouseButtonDown(0) && weapon.weaponType != "HamGrenade" && weapon.weaponType != "MiniGun")
+                weapon.TryShoot();
+
+        if(weapon.weaponType == "HamGrenade")
+        {
+            if (Input.GetMouseButton(0))
+                weapon.detonateTimer -= Time.deltaTime;
+            if (Input.GetMouseButtonUp(0) || weapon.detonateTimer < 0)
+                weapon.TryShoot();
+        }
+
+        if (weapon.weaponType == "AWP" && Input.GetMouseButton(1) && photonView.IsMine)
+        {
+            GetComponentInChildren<Camera>().fieldOfView = 25f;
+            GameUI.instance.ScopedUIOn();
+        }
+        else
+        {
+            GetComponentInChildren<Camera>().fieldOfView = 60f;
+            GameUI.instance.ScopedUIOff();
+        }
+
+        if(weapon.weaponType == "MiniGun")
+        {
+            if (Input.GetMouseButton(0))
+                weapon.TryShoot();
+        }
 
         void Move ()
         {
