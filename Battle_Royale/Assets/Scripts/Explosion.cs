@@ -8,6 +8,7 @@ public class Explosion : MonoBehaviour
 {
     public float bounceForce;
 
+    private float activeDamageTime;
     private int damage;
     private int attackerId;
     private bool isMine;
@@ -20,8 +21,23 @@ public class Explosion : MonoBehaviour
         this.attackerId = attackerId;
         this.isMine = isMine;
         playerRig = attacker.GetComponent<Rigidbody>();
+        activeDamageTime = 0.2f;
 
-        Destroy(gameObject, 5.0f);
+        Destroy(gameObject, 8f);
+    }
+
+    void Update()
+    {
+        if (activeDamageTime > 0)
+        {
+            activeDamageTime -= Time.deltaTime;
+        }
+
+
+        if (activeDamageTime <= 0)
+        {
+            GetComponent<SphereCollider>().enabled = false;
+        }
     }
 
     void OnTriggerEnter(Collider other)

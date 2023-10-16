@@ -39,7 +39,7 @@ public class PlayerWeapon : MonoBehaviour
         // get required components
         player = GetComponent<PlayerController>();
         weaponType = "Pistol";
-        detonateTimer = 5f;
+        detonateTimer = 3f;
     }
 
     public void TryShoot ()
@@ -139,6 +139,7 @@ public class PlayerWeapon : MonoBehaviour
             case "HamGrenade":
                 // parameters are weaponindex, name, bullet speed, damage, fire rate, ammo capacity
                 SwitchWeapon(2, "HamGrenade", 20f, 2, 0f, 1);
+                HamGrenadeModel.SetActive(true);
                 break;
             case "MiniGun":
                 // parameters are weaponindex, name, bullet speed, damage, fire rate, ammo capacity

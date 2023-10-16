@@ -70,7 +70,7 @@ public class Bullet : MonoBehaviour
         if (isMine)
         {
             attackingPlayer.CallSpawnExplosion(this.gameObject.transform.position, 100);
-            attackingPlayer.detonateTimer = 5f;
+            attackingPlayer.detonateTimer = 3f;
         }
         Destroy(gameObject);
     }

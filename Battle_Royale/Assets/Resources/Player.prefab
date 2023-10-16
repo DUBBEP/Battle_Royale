@@ -528,6 +528,7 @@ MonoBehaviour:
   rig: {fileID: 6703691138003628073}
   weapon: {fileID: 2752624822993225847}
   mr: {fileID: 6703691138003628075}
+  sniperBulletSpawner: {fileID: 3725866135075380498}
 --- !u!114 &1070056624586295991
 MonoBehaviour:
   m_ObjectHideFlags: 0

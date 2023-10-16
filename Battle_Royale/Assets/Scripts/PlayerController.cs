@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviourPun
     [Header("Info")]
     public int id;
     private int curAttackerId;
-    
+    private Vector3 hiltedPosition;
 
 
     [Header("Stats")]
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviourPun
     public Player photonPlayer;
     public PlayerWeapon weapon;
     public MeshRenderer mr;
+    public Transform sniperBulletSpawner;
 
     [PunRPC]
     public void Initialize (Player player)
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviourPun
 
         GameManager.instance.players[id - 1] = this;
 
+        hiltedPosition = sniperBulletSpawner.position;
 
         // is this not our local player?
         if (!photonView.IsMine)
@@ -76,11 +78,17 @@ public class PlayerController : MonoBehaviourPun
         if (weapon.weaponType == "AWP" && Input.GetMouseButton(1) && photonView.IsMine)
         {
             GetComponentInChildren<Camera>().fieldOfView = 25f;
+            GetComponentInChildren<CameraController>().sensX = 1;
+            GetComponentInChildren<CameraController>().sensY = 1;
+            sniperBulletSpawner.position = GetComponentInChildren<Transform>().position;
             GameUI.instance.ScopedUIOn();
         }
         else
         {
             GetComponentInChildren<Camera>().fieldOfView = 60f;
+            GetComponentInChildren<CameraController>().sensX = 3;
+            GetComponentInChildren<CameraController>().sensX = 3;
+            sniperBulletSpawner.position = hiltedPosition;
             GameUI.instance.ScopedUIOff();
         }
 
